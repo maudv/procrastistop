@@ -54,6 +54,11 @@ EOF
 
 
 main() {
+    if [ "$EUID" -ne 0 ]; then
+        echo "Please run as root"
+        exit
+    fi
+
     SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
     echo "Installing procrastistop..."
